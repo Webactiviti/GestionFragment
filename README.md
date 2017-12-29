@@ -8,4 +8,6 @@ En mode tablette les deux fragments sont affichés dans la même activity
 
 Le programme gére les evênements de toulouse avec une asynchro task.
 
+La version a été compilée avec Android studio 3.1 et SDK min API19 à API26
 
+Tester sur  lollipop 5.0.1
