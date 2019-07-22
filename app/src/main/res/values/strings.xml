@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gestion Fragment</string>
+    <string name="app_name">Gestion Fragment Toulouse</string>
     <string name="evenement_toulouse">Évènement à Toulouse !</string>
     <string name="charger">Charger</string>
 </resources>

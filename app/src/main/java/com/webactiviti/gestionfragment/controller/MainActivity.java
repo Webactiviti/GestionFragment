@@ -1,5 +1,6 @@
 package com.webactiviti.gestionfragment.controller;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -14,9 +15,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import com.webactiviti.GestionFragment.R;
 import com.webactiviti.gestionfragment.view.FragmentDetail;
 import com.webactiviti.gestionfragment.view.FragmentMain;
-import fr.afpa.GestionFragment.R;
+
 import com.webactiviti.gestionfragment.model.beans.Fields;
 import com.webactiviti.gestionfragment.model.webservice.OpenDataWS;
 import com.webactiviti.gestionfragment.view.FieldAdapter;
@@ -47,8 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-        ttvInfo = (TextView) findViewById(R.id.ttvInfo);
-        btnCharger = (Button) findViewById(R.id.btnCharger);
+        ttvInfo = findViewById(R.id.ttvInfo);
+        btnCharger = findViewById(R.id.btnCharger);
 
         btnCharger.setOnClickListener(this);
 
@@ -114,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     // Tache asynchrone  implementé dans la classe principale
+    @SuppressLint("StaticFieldLeak")
     public class TacheAsynchrone extends AsyncTask {
 
         private ArrayList<Fields> resultat = null;
@@ -139,14 +142,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          * Appelée sur le thread principal, on peut toucher aux éléments graphiques
          * mais on ne peut pas y faire de traitements longs
          */
+        @SuppressLint("SetTextI18n")
         @Override
         protected void onPostExecute(Object o) {
+            String messError ;
 
             if (exception != null) {
                 super.onPostExecute(o);
                 //Échec
                 exception.printStackTrace();
-                ttvInfo.setText("Erreur : " + exception.getMessage());
+                messError ="Erreur : " + exception.getMessage();
+                ttvInfo.setText(messError);
                 ttvInfo.setTextColor(Color.RED);
             } else {
                 //efface tous les anciens fields
@@ -154,7 +160,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // copy les fields reçus
                 fields.addAll(resultat);
                 fieldAdapter.notifyDataSetChanged();
-                ttvInfo.setText("Chargement terminé");
+                messError ="Chargement terminé";
+                ttvInfo.setText(messError);
                 ttvInfo.setTextColor(Color.BLUE);
                 afficheFragment();
             }

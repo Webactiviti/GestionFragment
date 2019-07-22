@@ -5,9 +5,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.webactiviti.GestionFragment.R;
 import com.webactiviti.gestionfragment.view.FragmentDetail;
-import fr.afpa.GestionFragment.R;
+
+
 import com.webactiviti.gestionfragment.model.beans.Fields;
+
+import java.util.Objects;
 
 
 public class DetailActivity extends AppCompatActivity  {
@@ -29,7 +33,7 @@ public class DetailActivity extends AppCompatActivity  {
         //tv_detail = (TextView) findViewById(R.id.tv_detail);
 
         //Données récupération du Fields transmis
-        Fields fields = (Fields) getIntent().getExtras().getSerializable(FIELDS_KEY);
+        Fields fields = (Fields) Objects.requireNonNull(getIntent().getExtras()).getSerializable(FIELDS_KEY);
 
        // tv_titre.setText(fields.getNom_de_la_manifestation());
         //tv_detail.setText(fields.getDescriptif_long());
@@ -38,6 +42,7 @@ public class DetailActivity extends AppCompatActivity  {
         fragmentTransaction =fragmentManager.beginTransaction() ;
 
         // transmission de l'objet fields au fragment
+        assert fields != null;
         fragmentTransaction.replace(R.id.flyFrame2, FragmentDetail.newInstance( fields )).commit();
 
 

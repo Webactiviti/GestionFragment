@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import fr.afpa.GestionFragment.R;
+
+import com.webactiviti.GestionFragment.R;
 import com.webactiviti.gestionfragment.model.beans.Fields;
 
+import org.jetbrains.annotations.NotNull;
 
 
 public class FragmentDetail extends Fragment {
@@ -55,7 +57,7 @@ public class FragmentDetail extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Récupère le view pour le find
         View view = inflater.inflate(R.layout.fragment_detail, container, false);

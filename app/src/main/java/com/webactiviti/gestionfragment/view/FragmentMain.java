@@ -11,8 +11,11 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import fr.afpa.GestionFragment.R;
+
+import com.webactiviti.GestionFragment.R;
 import com.webactiviti.gestionfragment.model.beans.Fields;
+
+import org.jetbrains.annotations.NotNull;
 
 // Fragment de la page principale
 public class FragmentMain extends Fragment implements FieldAdapter.OnFieldsListener {
@@ -52,18 +55,19 @@ public class FragmentMain extends Fragment implements FieldAdapter.OnFieldsListe
         super.onCreate(savedInstanceState);
 
         Bundle args = getArguments();
+        assert args != null;
         if (args.containsKey(ARRAY_FIELDS_KEY)){
             this.fields = (ArrayList<Fields>) args.getSerializable(ARRAY_FIELDS_KEY);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_main, container, false);
 
-        rcvFragment = (RecyclerView) view.findViewById(R.id.rcvFragment);
+        rcvFragment = view.findViewById(R.id.rcvFragment);
         fieldAdapter = new FieldAdapter(this.fields, this);
         rcvFragment.setLayoutManager(new LinearLayoutManager(null));
         rcvFragment.setAdapter(fieldAdapter);

@@ -8,8 +8,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import fr.afpa.GestionFragment.R;
+
+import com.webactiviti.GestionFragment.R;
 import com.webactiviti.gestionfragment.model.beans.Fields;
+
+import org.jetbrains.annotations.NotNull;
 
 
 public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.ViewHolder> {
@@ -30,8 +33,9 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.ViewHolder> 
     /**
      * Méthode qui permet de créer une ligne mais que nous n'appellerons jamais nous-mêmes
      */
+    @NotNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ligne_evenement, parent, false);
 
         return new FieldAdapter.ViewHolder(view);
@@ -41,19 +45,16 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.ViewHolder> 
      * Méthode qui remplit une ligne créée mais que nous n'appellerons jamais nous-mêmes
      */
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull final ViewHolder holder, int position) {
         final Fields field = fields.get(position);
 
         holder.ttvTitreEvenement.setText(field.getNom_de_la_manifestation());
         holder.ttvDescription.setText(field.getDescriptif_court());
 
 
-        holder.root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onFieldsListener != null) {
-                    onFieldsListener.onClick(field);
-                }
+        holder.root.setOnClickListener(v -> {
+            if (onFieldsListener != null) {
+                onFieldsListener.onClick(field);
             }
         });
     }
@@ -70,12 +71,12 @@ public class FieldAdapter extends RecyclerView.Adapter<FieldAdapter.ViewHolder> 
      * Classe interne représentant les pointeurs vers les composants graphiques d'une ligne de la liste
      * Il y aura une instance de cette classe par ligne
      */
-    protected class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView ttvTitreEvenement, ttvDescription;
-        public View root;
+        TextView ttvTitreEvenement, ttvDescription;
+        View root;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             ttvTitreEvenement =  itemView.findViewById(R.id.ttvTitreEvenement);
