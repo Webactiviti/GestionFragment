@@ -1,6 +1,7 @@
 # GestionFragment
 
-Cette application gère deux fragments .
+
+Cette application gère deux fragments . ( affiche les évênements de toulouse, gestion fichier json et http)
 
 En mode mobile le deuxième fragment est ouvert dans une autre activity
 
