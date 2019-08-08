@@ -14,7 +14,7 @@ En mode tablette les deux fragments sont affichés dans la même activity
 
 Utilisation de la librarie MDtoast : https://github.com/valdesekamdem/MaterialDesign-Toast 
 
-* **Info**
+### info
 
 * Gestion de la présence de la connexion aux réseaux
 * Utilisation de google Gson pour extraction des données Json reçues
