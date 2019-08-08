@@ -1,8 +1,11 @@
 package com.webactiviti.gestionfragment.controller;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -22,7 +25,7 @@ import com.webactiviti.gestionfragment.view.FragmentMain;
 import com.webactiviti.gestionfragment.model.beans.Fields;
 import com.webactiviti.gestionfragment.model.webservice.OpenDataWS;
 import com.webactiviti.gestionfragment.view.FieldAdapter;
-
+import com.webactiviti.gestionfragment.view.MDToast;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Composants graphiques
     private TextView ttvInfo;
 
-    private Button btnCharger;
+
 
     //Données contenant les évênements
     private ArrayList<Fields> fields;
@@ -48,11 +51,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button btnCharger;
 
         ttvInfo = findViewById(R.id.ttvInfo);
         btnCharger = findViewById(R.id.btnCharger);
 
-        btnCharger.setOnClickListener(this);
+        //btnCharger.setOnClickListener(this);
+
+        btnCharger.setOnClickListener(v -> {
+            // vérifie réseaux
+            if (isNetworkAvailable()) {
+                try {
+                    new TacheAsynchrone().execute();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    ttvInfo.setText(e.getMessage());
+                }
+            } else  {
+                MDToast.makeText (getApplicationContext(), "Réseaux non disponible",
+                        MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR).show();
+            }
+
+
+
+        });
+
+
 
         fields = new ArrayList<>();
         fieldAdapter = new FieldAdapter(fields, this);
@@ -63,16 +87,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+
+
+/*
         try {
             // Lancement de la tache asynchrone
-            TacheAsynchrone TacheAsynchrone = new TacheAsynchrone();
-            TacheAsynchrone.execute();
+ //           TacheAsynchrone TacheAsynchrone = new TacheAsynchrone();
+ //           TacheAsynchrone.execute();
+
+            new TacheAsynchrone().execute();
         } catch (Exception e) {
             e.printStackTrace();
             ttvInfo.setText(e.getMessage());
         }
-
+*/
     }
+
+
+
 
     /**
      * Méthode appelée lors d'un clic sur une ligne et en paramètre le fields en question
@@ -115,6 +147,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+    private boolean isNetworkAvailable() {
+        boolean connected;
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        //we are connected to a network
+        connected = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED;
+
+        return connected;
+    }
+
+
+
+
+
     // Tache asynchrone  implementé dans la classe principale
     @SuppressLint("StaticFieldLeak")
     public class TacheAsynchrone extends AsyncTask {
@@ -148,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String messError ;
 
             if (exception != null) {
-                super.onPostExecute(o);
+ //               super.onPostExecute(o);
                 //Échec
                 exception.printStackTrace();
                 messError ="Erreur : " + exception.getMessage();

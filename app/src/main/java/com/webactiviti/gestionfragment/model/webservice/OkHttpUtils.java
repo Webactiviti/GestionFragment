@@ -1,7 +1,10 @@
 package com.webactiviti.gestionfragment.model.webservice;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.net.HttpURLConnection;
+import java.util.Objects;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -9,12 +12,13 @@ import okhttp3.Response;
 
 
 
-public class OkHttpUtils {
+class OkHttpUtils {
 
     /**
      * Réalise une requête GET avec l'URL transmise en paramètre et retourne le résultat
      */
-    public static String sendGetOkHttpRequest(String url) throws Exception {
+    @NotNull
+    static String sendGetOkHttpRequest(String url) throws Exception {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -30,7 +34,7 @@ public class OkHttpUtils {
         }
         else {
             //Résultat de la requête
-            return response.body().string();
+            return Objects.requireNonNull(response.body()).string();
         }
     }
 }

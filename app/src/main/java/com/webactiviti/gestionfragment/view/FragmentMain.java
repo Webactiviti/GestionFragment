@@ -21,17 +21,14 @@ import org.jetbrains.annotations.NotNull;
 public class FragmentMain extends Fragment implements FieldAdapter.OnFieldsListener {
 
 
-    public final static String ARRAY_FIELDS_KEY = "ARRAY_FIELDS_KEY";
-    private RecyclerView rcvFragment;
+    final static String ARRAY_FIELDS_KEY = "ARRAY_FIELDS_KEY";
 
 
     // donnée récupéré
     private ArrayList<Fields> fields;
-    //Outil
-    private FieldAdapter fieldAdapter;
 
 
-    private Fields OneField;
+//    private Fields OneField;
     private OnFragmentInteractionListener mListener;
 
     public FragmentMain() {
@@ -67,8 +64,9 @@ public class FragmentMain extends Fragment implements FieldAdapter.OnFieldsListe
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_main, container, false);
 
-        rcvFragment = view.findViewById(R.id.rcvFragment);
-        fieldAdapter = new FieldAdapter(this.fields, this);
+        RecyclerView rcvFragment = view.findViewById(R.id.rcvFragment);
+        //Outil
+        FieldAdapter fieldAdapter = new FieldAdapter(this.fields, this);
         rcvFragment.setLayoutManager(new LinearLayoutManager(null));
         rcvFragment.setAdapter(fieldAdapter);
         return view ;

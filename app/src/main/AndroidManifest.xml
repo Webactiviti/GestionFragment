@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.webactiviti.GestionFragment">
+
     <!-- Autorisation d'aller sur Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Autorisation état réseaux  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="false"

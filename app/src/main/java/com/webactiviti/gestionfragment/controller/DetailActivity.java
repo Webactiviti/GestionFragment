@@ -13,33 +13,23 @@ import com.webactiviti.gestionfragment.model.beans.Fields;
 
 import java.util.Objects;
 
-
+// affiche le détail de l'activité sélectionnée
 public class DetailActivity extends AppCompatActivity  {
 
-    public final static String FIELDS_KEY = "FIELDS_KEY";
+    final static String FIELDS_KEY = "FIELDS_KEY";
 
-    //Composants graphiques
-   // private TextView tv_titre, tv_detail;
-
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-       // tv_titre = (TextView) findViewById(R.id.tv_titre);
-        //tv_detail = (TextView) findViewById(R.id.tv_detail);
-
         //Données récupération du Fields transmis
         Fields fields = (Fields) Objects.requireNonNull(getIntent().getExtras()).getSerializable(FIELDS_KEY);
+        FragmentTransaction fragmentTransaction ;
 
-       // tv_titre.setText(fields.getNom_de_la_manifestation());
-        //tv_detail.setText(fields.getDescriptif_long());
-
-        fragmentManager = getSupportFragmentManager();
-        fragmentTransaction =fragmentManager.beginTransaction() ;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction() ;
 
         // transmission de l'objet fields au fragment
         assert fields != null;

@@ -14,9 +14,11 @@ public class Fields implements Serializable {
         return descriptif_court;
     }
 
+
     public void setDescriptif_court(String descriptif_court) {
         this.descriptif_court = descriptif_court;
     }
+
 
     public String getDescriptif_long() {
         return descriptif_long;

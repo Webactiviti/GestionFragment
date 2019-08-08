@@ -9,8 +9,9 @@ public class Resultat {
     public List<Record> getRecords() {
         return records;
     }
-
+/*
     public void setRecords(List<Record> records) {
         this.records = records;
     }
+    */
 }

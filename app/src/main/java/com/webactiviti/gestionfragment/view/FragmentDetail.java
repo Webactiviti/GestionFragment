@@ -27,10 +27,6 @@ public class FragmentDetail extends Fragment {
     private String mParam2;
 
 
-
-    //Composants graphiques
-    private TextView ttvTitre, ttvDetail;
-
     public FragmentDetail() {
         // Required empty public constructor
     }
@@ -61,10 +57,11 @@ public class FragmentDetail extends Fragment {
                              Bundle savedInstanceState) {
         // Récupère le view pour le find
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
-        ttvTitre  = view.findViewById(R.id.ttvTitreFrag);
+        //Composants graphiques
+        TextView ttvTitre = view.findViewById(R.id.ttvTitreFrag);
         ttvTitre.setText(mParam1);
 
-        ttvDetail = view.findViewById(R.id.ttvDetailFrag);
+        TextView ttvDetail = view.findViewById(R.id.ttvDetailFrag);
         ttvDetail.setText(mParam2);
         // Inflate the layout for this fragment
         return view ;
