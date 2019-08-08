@@ -27,10 +27,10 @@ import com.webactiviti.GestionFragment.R;
 
 public class MDToast extends Toast {
 
-    private static final int TYPE_INFO = 0;
-    private static final int TYPE_SUCCESS = 1;
-    private static final int TYPE_WARNING = 2;
-    private static final int TYPE_ERROR = 3;
+    public static final int TYPE_INFO = 0;
+    public static final int TYPE_SUCCESS = 1;
+    public static final int TYPE_WARNING = 2;
+    public static final int TYPE_ERROR = 3;
 
     public static int LENGTH_LONG = Toast.LENGTH_LONG;
     public static int LENGTH_SHORT = Toast.LENGTH_SHORT;
