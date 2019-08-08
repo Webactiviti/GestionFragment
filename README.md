@@ -12,10 +12,9 @@ En mode mobile le deuxième fragment est ouvert dans une autre activity
 En mode tablette les deux fragments sont affichés dans la même activity
 
 
-Utilisation de la librarie MDtoast :
+Utilisation de la librarie MDtoast : https://github.com/valdesekamdem/MaterialDesign-Toast 
 
-https://github.com/valdesekamdem/MaterialDesign-Toast 
-
+* **Info**
 
 * Gestion de la présence de la connexion aux réseaux
 * Utilisation de google Gson pour extraction des données Json reçues
