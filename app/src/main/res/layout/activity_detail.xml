@@ -4,40 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="fr.afpa.GestionFragment.com.webactiviti.gestionfragment.DetailActivity">
-<!--
-    <TextView
-        android:id="@+id/tv_titre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
-        android:text="Titre !"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+    tools:context="com.webactiviti.gestionfragment.controller.DetailActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:text="TextView" />
-        </LinearLayout>
-    </ScrollView>
--->
     <FrameLayout
         android:id="@+id/flyFrame2"
         android:layout_width="match_parent"
