@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView ttvInfo;
 
 
-
     //Données contenant les évênements
     private ArrayList<Fields> fields;
 
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ttvInfo = findViewById(R.id.ttvInfo);
         btnCharger = findViewById(R.id.btnCharger);
 
-        //btnCharger.setOnClickListener(this);
 
         btnCharger.setOnClickListener(v -> {
             // vérifie réseaux
@@ -73,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
 
-
         });
 
 
@@ -87,20 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-
-
-/*
-        try {
-            // Lancement de la tache asynchrone
- //           TacheAsynchrone TacheAsynchrone = new TacheAsynchrone();
- //           TacheAsynchrone.execute();
-
-            new TacheAsynchrone().execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-            ttvInfo.setText(e.getMessage());
-        }
-*/
     }
 
 
@@ -194,7 +177,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String messError ;
 
             if (exception != null) {
- //               super.onPostExecute(o);
                 //Échec
                 exception.printStackTrace();
                 messError ="Erreur : " + exception.getMessage();
